@@ -6,7 +6,8 @@ for i in range(9):
 heights_sum = sum(heights)
 
 for height in heights:
-    if (heights_sum - height - 100 in heights) and (heights_sum - height - 100 != height):
+    pair = heights_sum - height - 100
+    if (pair in heights) and (pair != height):
         heights.remove(height)
         heights.remove(heights_sum - height- 100)
         break
