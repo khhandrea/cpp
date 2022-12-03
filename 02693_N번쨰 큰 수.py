@@ -1,2 +1,3 @@
 T = int(input())
-print('hi')
+for _ in range(T):
+    print(sorted(list(map(int, input().split())))[-3])
