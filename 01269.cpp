@@ -74,5 +74,34 @@ void dfs(set<short> *graph, short N, short V) {
 }
 
 void bfs(set<short> *graph, short N, short V) {
+    short current, i;
+    set<short>::iterator iter;
+    vector<bool> *visited;
+    queue<short> bfs_queue;
 
+    // Initialize visited set and bfs queue
+    visited = new vector<bool>(N);
+    for(i=0; i<N; i++) {
+        visited->at(i) = false;
+    }
+    bfs_queue.push(V - 1);
+
+    // BFS loop
+    while (!bfs_queue.empty()) {
+        current = bfs_queue.front();
+        bfs_queue.pop();
+
+        if (!visited->at(current)) {
+            visited->at(current) = true;
+            printf("%d ", current + 1);
+        }
+
+        for (iter=graph[current].begin(); iter!=graph[current].end(); iter++) {
+            // printf("check %hd: %s\n", *iter, visited->at(*iter) ? "true" : "false");
+            if (!visited->at(*iter)) {
+                bfs_queue.push(*iter);
+            }
+        }
+    }
+    printf("\n");
 }
