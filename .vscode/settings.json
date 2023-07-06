@@ -5,6 +5,7 @@
         "queue": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ostream": "cpp"
     }
 }
