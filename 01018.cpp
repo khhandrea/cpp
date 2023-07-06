@@ -54,7 +54,6 @@ int main() {
     }
 
     // Output
-    cout << "min, max: " << min << " " << max << endl;
     if (max > (64 - min)) {
         cout << 64 - max << endl;
     }
