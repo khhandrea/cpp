@@ -14,7 +14,7 @@ char board[5][5] = {
 short dy[8] = {0, -1, -1, -1, 0, +1, +1, +1};
 short dx[8] = {+1, +1, 0, -1, -1, -1, 0, +1};
 
-bool hasWord(int y, int x, string word) {
+bool hasWord(int y, int x, const string& word) {
     // Base case
     if (!((y >= 0) && (y <= 4) && (x >= 0) && (x <= 4))) {
         return false;
