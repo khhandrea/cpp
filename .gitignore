@@ -1,5 +1,6 @@
+# Ignore binary files (without exetension)
 *
+!*.*
 !*/
-!*.cpp
-!*.py
+
 .vscode/
