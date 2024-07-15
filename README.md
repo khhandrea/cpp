@@ -10,3 +10,4 @@ CPP executable with Clang
 | baekjoon | https://www.acmicpc.net solving |
 | c-codeup | https://codeup.kr/ solving |
 | cpp-practice | cpp/stl practice |
+| project euler | https://projecteuler.net/ solving |
