@@ -6,8 +6,8 @@ bool is_pythagorean(short a, short b, short c) {
 }
 
 int main() {
-    short a, b, c;
-    const char *result;
+    short a, b, c, max = 0;
+    bool result;
 
     while (true) {
         scanf("%hd %hd %hd", &a, &b, &c);
@@ -15,13 +15,16 @@ int main() {
             break;
         }
 
-        if (is_pythagorean(a, b, c) || is_pythagorean(b, c, a) || is_pythagorean(c, a, b)) {
-            result = "right";
+        if (a >= b && a >= c) result = is_pythagorean(b, c, a);
+        else if (b > a && b >= c) result = is_pythagorean(a, c, b);
+        else result = is_pythagorean(a, b, c);
+
+        if (result) {
+            printf("right\n");
         }
         else {
-            result = "wrong";
+            printf("wrong\n");
         }
-        printf("%s\n", result);
     }
 
     return 0;
