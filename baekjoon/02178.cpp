@@ -27,6 +27,7 @@ int main() {
   Coord next_coord, coord = {0, 0, 1};
   short dx[4] = {+1, -1, 0, 0};
   short dy[4] = {0, 0, +1, -1};
+  bool found_target = false;
 
   // Input
   std::cin >> N >> M;
@@ -44,31 +45,35 @@ int main() {
   }
 
   // BFS
+  visited.insert(coord);
   q.push(coord);
-  while (!q.empty()) {
+  while (!found_target) {
     coord = q.front();
     q.pop();
 
-
-    if (coord.x == M - 1 && coord.y == N - 1) {
-      break;
-    }
-
-    visited.insert(coord);
-    next_coord.distance = coord.distance + 1;
     for (short i = 0; i < 4; i++) {
       next_coord.x = coord.x + dx[i];
       next_coord.y = coord.y + dy[i];
-      if (next_coord.x >= 0 && next_coord.x < M &&
-          next_coord.y >= 0 && next_coord.y < N &&
-          visited.find(next_coord) == visited.end() &&
-          maze[next_coord.y][next_coord.x] == '1') {
-        q.push(next_coord);
+      next_coord.distance = coord.distance + 1;
+
+      if (next_coord.x == M - 1 && next_coord.y == N - 1) {
+        found_target = true;
+        break;
       }
+
+      if (next_coord.x < 0 || next_coord.x >= M ||
+          next_coord.y < 0 || next_coord.y >= N ||
+          visited.find(next_coord) != visited.end() ||
+          maze[next_coord.y][next_coord.x] != '1') {
+        continue;
+      }
+
+      visited.insert(next_coord);
+      q.push(next_coord);
     }
   }
 
-  std::cout << coord.distance << '\n';
+  std::cout << next_coord.distance << '\n';
 
   return 0;
 }
